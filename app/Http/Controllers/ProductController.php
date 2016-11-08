@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use View;
 
 class ProductController extends Controller
 {
@@ -11,7 +13,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
         $products->toarray();
-        return View::make('products.index',compact('users'));
+        return View::make('products.index')->with('products', $products);
     }
 
     /**

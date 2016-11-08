@@ -21,6 +21,7 @@
 
 require __DIR__.'/../bootstrap/autoload.php';
 
+require_once 'Candy.php';
 /*
 |--------------------------------------------------------------------------
 | Turn On The Lights
