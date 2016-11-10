@@ -32,7 +32,7 @@ class CartController extends Controller
       $order->timestamp = Carbon\Carbon::now();
       $user->orders()->save($order);
 
-
+      return view('cart.add_to_cart');
 
     }
 }
