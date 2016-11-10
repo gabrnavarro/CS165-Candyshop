@@ -19,6 +19,11 @@
          <td> {{$product->description}}</td>
          <td> {{$product->status}}</td>
          <td> {{$product->available_items}}</td>
+         <td> <form action="/products/add_to_cart" method="post">
+           {{ csrf_field() }}
+           <input type="hidden" value="{{$product->id}}" name="id"\>
+           <input type="submit" value="Add to cart" class="btn btn-raised btn-warning"/>
+         </form>
        </tr>
        @endforeach
      </tbody>

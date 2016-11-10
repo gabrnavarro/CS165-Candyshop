@@ -21,6 +21,7 @@
   <!-- Bootstrap Material Design -->
   <link rel="stylesheet" type="text/css" href="/css0/bootstrap-material-design.css">
   <link rel="stylesheet" type="text/css" href="/css0/ripples.min.css">
+  <link rel="stylesheet" type="text/css" href="/css0/customstyles.css">
 
 
     <!-- Scripts -->
@@ -45,7 +46,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/products') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -63,12 +64,18 @@
                             <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
+                        <li><a class="navbar-brand" href="/cart"><i class="material-icons md-36">shopping_cart</i></a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                  <li>
+                                    <a href="{{ url('/profile') }}">
+                                      User Profile
+                                    </a>
+                                  </li>
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
@@ -80,6 +87,7 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+
                                 </ul>
                             </li>
                         @endif

@@ -40,4 +40,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Auth::routes();
-Route::resource('products','ProductController');
+Route::group(array('middleware'=>'auth'),function(){
+  Route::resource('products', 'ProductController');
+  Route::get('/profile', 'ProfileController@index');
+  Route::get('/cart', 'CartController@index');
+  Route::post('/products/add_to_cart', 'CartController@add_to_cart');
+});
