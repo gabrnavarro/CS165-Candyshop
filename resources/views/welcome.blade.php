@@ -13,10 +13,14 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background: url(images/background.jpg) no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                color: #fdffff;
                 font-family: 'Raleway', sans-serif;
-                font-weight: 100;
+                font-weight: 400;
                 height: 100vh;
                 margin: 0;
             }
@@ -50,7 +54,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #ffffff;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
@@ -77,7 +81,7 @@
                 <div class="title m-b-md">
                     Shop
                 </div>
-
+                <p class="links"> The perfect ecommerce app for your candystore</p>
             </div>
         </div>
     </body>
