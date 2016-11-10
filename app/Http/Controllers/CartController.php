@@ -24,7 +24,7 @@ class CartController extends Controller
       $order->quantity = 1;
       $order->status = 'in-cart'; //in-cart, available
       $order->timestamp = Carbon\Carbon::now();
-      $user->orders->save($order);
+      $user->orders()->save($order);
 
 
 
