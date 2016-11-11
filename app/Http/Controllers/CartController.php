@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Order;
 use App\User;
+use App\Product;
 use Carbon;
 use View;
 use Illuminate\Http\Request;
@@ -16,7 +17,8 @@ class CartController extends Controller
 
     public function index(){
       $user = User::find(Auth::id());
-      $cart = $user->orders()->where('status','in-cart')->get();
+      $cart = $user->orders()->where('orders.status','in-cart')->
+      join('products','orders.product_id','=','products.id')->get();
       $cart->toarray();
       return View::make('cart.index')->with('cart', $cart);
 
@@ -31,8 +33,8 @@ class CartController extends Controller
       $order->status = 'in-cart'; //in-cart, available
       $order->timestamp = Carbon\Carbon::now();
       $user->orders()->save($order);
-
-      return view('cart.add_to_cart');
+      $product = Product::find($id);
+      return View::make('cart.add_to_cart')->with('product', $product);
 
     }
 }

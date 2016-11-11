@@ -9,7 +9,8 @@
         <th> Timestamp </th>
         <th> Status </th>
         <th> Quantity </th>
-        <th> Product Id(details soon!) </th>
+        <th> Candy Name </th>
+        <th> Description </th>
       </tr>
     </thead>
     <tbody>
@@ -18,7 +19,8 @@
          <td> {{$cart_item->timestamp}}</td>
          <td> {{$cart_item->status}}</td>
          <td> {{$cart_item->quantity}}</td>
-         <td> {{$cart_item->product_id}}</td>
+         <td> {{$cart_item->item}}</td>
+         <td> {{$cart_item->description}} </td>
        </tr>
        @endforeach
      </tbody>
