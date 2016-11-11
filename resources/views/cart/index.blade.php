@@ -19,7 +19,7 @@
          <td> {{$cart_item->quantity}}</td>
          <td> {{$cart_item->item}}</td>
          <td> {{$cart_item->description}} </td>
-         <td> <form action="/products/remove_from_cart" method="post">
+         <td> <form action="/cart/remove_from_cart" method="post">
            {{ csrf_field() }}
            <input type="hidden" value="{{$cart_item->order_id}}" name="order_id"\>
            <input type="hidden" value="{{$cart_item->product_id}}" name="product_id"\>
@@ -29,6 +29,9 @@
        @endforeach
      </tbody>
    </table>
+   <div class="row">
+   <a href="/cart/checkout" class="right btn btn-raised btn-warning"> Checkout </a>
+ </div>
    @else
      There are no orders.
    @endif
