@@ -23,7 +23,7 @@
            {{ csrf_field() }}
            <input type="hidden" value="{{$product->id}}" name="id"\>
            <input type="submit" value="Add to cart" class="btn btn-raised btn-warning"/>
-         </form>
+         </form></td>
        </tr>
        @endforeach
      </tbody>

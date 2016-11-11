@@ -6,21 +6,25 @@
   <table class = "table">
     <thead>
       <tr>
-        <th> Timestamp </th>
-        <th> Status </th>
+        <th> Time added </th>
         <th> Quantity </th>
         <th> Candy Name </th>
-        <th> Description </th>
+        <th>  Description </th>
       </tr>
     </thead>
     <tbody>
       @foreach ($cart as $cart_item)
        <tr>
          <td> {{$cart_item->timestamp}}</td>
-         <td> {{$cart_item->status}}</td>
          <td> {{$cart_item->quantity}}</td>
          <td> {{$cart_item->item}}</td>
          <td> {{$cart_item->description}} </td>
+         <td> <form action="/products/remove_from_cart" method="post">
+           {{ csrf_field() }}
+           <input type="hidden" value="{{$cart_item->order_id}}" name="order_id"\>
+           <input type="hidden" value="{{$cart_item->product_id}}" name="product_id"\>
+           <input type="submit" value="Remove from cart" class="btn btn-raised btn-primary"/>
+         </form></td>
        </tr>
        @endforeach
      </tbody>

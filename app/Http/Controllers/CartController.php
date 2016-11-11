@@ -17,7 +17,8 @@ class CartController extends Controller
 
     public function index(){
       $user = User::find(Auth::id());
-      $cart = $user->orders()->where('orders.status','in-cart')->
+      $cart = $user->orders()->select('timestamp', 'orders.id as order_id',
+      'orders.product_id','products.id as product_id', 'quantity','item','description')->where('orders.status','in-cart')->
       join('products','orders.product_id','=','products.id')->get();
       $cart->toarray();
       return View::make('cart.index')->with('cart', $cart);
@@ -36,5 +37,14 @@ class CartController extends Controller
       $product = Product::find($id);
       return View::make('cart.add_to_cart')->with('product', $product);
 
+    }
+
+    public function remove_from_cart(Request $request){
+      $user = User::find(Auth::id()); //NEED TO CREATE ALL FOREIGN KEYS TO EACH TABLE IF NECESSARY
+      $order_id = $request->input('order_id');
+      $product_id= $request->input('product_id');
+      $product = Product::find($product_id);
+      Order::destroy($order_id);
+      return View::make('cart.remove_from_cart')->with('product', $product);
     }
 }
