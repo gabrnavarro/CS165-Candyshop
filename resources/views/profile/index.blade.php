@@ -9,7 +9,7 @@
       <li> Username: {{Auth::user()->username}}</li>
       <li> Email: {{Auth::user()->email}}</li>
     </ul>
-    <a href="javascript:void(0)" class="btn btn-raised btn-primary">Order History</a>
+    <a href="/profile/order_history" class="btn btn-raised btn-primary">Order History</a>
 
   </div>
 

@@ -33,7 +33,7 @@
    <a href="/cart/checkout" class="right btn btn-raised btn-warning"> Checkout </a>
  </div>
    @else
-     There are no orders.
+    Your cart is empty. Buy some candies!
    @endif
    @stop
    </div>

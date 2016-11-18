@@ -3,18 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Product;
 use View;
+use DB;
+use App\User;
 
 class ProductController extends Controller
 {
 
     public function index()
     {
-        $products = Product::all();
+        $products = DB::table('products')->where('available_items','>',0)->orderBy('item')->get();
         $products->toarray();
         return View::make('products.index')->with('products', $products);
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -23,7 +28,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+          $user = User::find(Auth::id());
+          if(!($user->is_admin)){
+            return redirect('/products');
+          }
+          return view('products.create');
     }
 
     /**
@@ -34,7 +43,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $user = User::find(Auth::id());
+      if(!($user->is_admin)){
+        return redirect('/products');
+      }
+      $product = new Product;
+      $product->item = $request->input('item');
+      $product->description = $request->input('description');
+      $product->available_items = $request->input('available_items');
+      $product->status = "available";
+      $product->save();
     }
 
     /**

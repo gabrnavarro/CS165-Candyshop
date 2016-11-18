@@ -19,7 +19,7 @@ class CartController extends Controller
       $user = User::find(Auth::id());
       $cart = $user->orders()->select('timestamp', 'orders.id as order_id',
       'orders.product_id','products.id as product_id', 'quantity','item','description')->where('orders.status','in-cart')->
-      join('products','orders.product_id','=','products.id')->get();
+      join('products','orders.product_id','=','products.id')->orderBy('item')->get();
       $cart->toarray();
       return View::make('cart.index')->with('cart', $cart);
 
@@ -35,6 +35,7 @@ class CartController extends Controller
       $order->timestamp = Carbon\Carbon::now();
       $user->orders()->save($order);
       $product = Product::find($id);
+      $product->decrement('available_items');
       return View::make('cart.add_to_cart')->with('product', $product);
 
     }
@@ -44,7 +45,15 @@ class CartController extends Controller
       $order_id = $request->input('order_id');
       $product_id= $request->input('product_id');
       $product = Product::find($product_id);
+      $product->increment('available_items');
       Order::destroy($order_id);
       return View::make('cart.remove_from_cart')->with('product', $product);
+    }
+
+    public function checkout(){
+      $user = User::find(Auth::id());
+      $orders = $user->orders();
+      $orders->where('status','in-cart')->update(['status'=>'sold']);
+      return View::make('cart.checkout');
     }
 }
