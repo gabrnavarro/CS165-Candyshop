@@ -49,4 +49,6 @@ Route::group(array('middleware'=>'auth'),function(){
   Route::post('/cart/remove_from_cart', 'CartController@remove_from_cart');
   Route::get('/cart/checkout','CartController@checkout');
   Route::get('/profile/order_history', 'ProfileController@order_history');
+  Route::get('/profile/update', 'ProfileController@update');
+  Route::post('/profile/store', 'ProfileController@store');
 });
