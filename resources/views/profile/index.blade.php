@@ -3,8 +3,8 @@
 @section('content')
 
 <div class="container">
-  <div class="jumbotron">
-    <h1> User Profile</h1>
+  <div class="jumbotron ">
+    <h1 class= "font-weight-normal"> User Profile</h1>
     <ul>
       <li> Username: {{Auth::user()->username}}</li>
       <li> Email: {{Auth::user()->email}}</li>
@@ -14,8 +14,11 @@
 
     </ul>
     <a href="/profile/order_history" class="btn btn-raised btn-primary">Order History</a>
+    <a href="/profile/update" class="btn btn-raised btn-primary">Update Profile</a>
 
   </div>
+
+  
 
 </div>
 @endsection

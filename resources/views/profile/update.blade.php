@@ -12,7 +12,7 @@
                     <div class="form-group{{$errors->has('username') ? ' has error' : ''}}">
                       <label for="item" class="col-md-4 control-label">Username</label>
                         <div class="col-md-6">
-                          <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+                          {{Form::text('username', Auth::user()->username,['class' => 'form-control'])}}
                           @if ($errors->has('username'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('username') }}</strong>
@@ -25,7 +25,7 @@
                           <label for="fullname" class="col-md-4 control-label">Full Name</label>
 
                           <div class="col-md-6">
-                              <input id="email" type="text" class="form-control" name="fullname" required>
+                            {{Form::text('fullname', Auth::user()->fullname,['class' => 'form-control'])}}
 
                               @if ($errors->has('fullname'))
                                   <span class="help-block">
@@ -39,7 +39,7 @@
                           <label for="address" class="col-md-4 control-label">Address</label>
 
                           <div class="col-md-6">
-                              <input id="address" type="text" class="form-control" name="address" required>
+                            {{Form::text('address', Auth::user()->address,['class' => 'form-control'])}}
 
                               @if ($errors->has('address'))
                                   <span class="help-block">
@@ -53,7 +53,7 @@
                           <label for="relationship" class="col-md-4 control-label">Relationship Status</label>
 
                           <div class="col-md-6">
-                              <input id="relationship" type="text" class="form-control" name="relationship" required>
+                              {{Form::text('relationship', Auth::user()->relationship,['class' => 'form-control'])}}
 
                               @if ($errors->has('relationship'))
                                   <span class="help-block">

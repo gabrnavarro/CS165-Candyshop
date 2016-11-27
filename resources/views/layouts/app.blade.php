@@ -24,7 +24,12 @@
   <link rel="stylesheet" type="text/css" href="/css0/customstyles.css">
 
 
+
     <!-- Scripts -->
+    <script type="text/javascript" src="/js0/bootstrap.js"></script>
+    <script type="text/javascript" src="/js0/material.js"></script>
+    <script type="text/javascript" src="/js0/ripples.js"></script>
+
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -64,6 +69,8 @@
                             <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
+                        @if (Auth::user()->is_admin)
+                        @endif
                         <li><a class="navbar-brand" href="/cart"><i class="material-icons md-36">shopping_cart</i></a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

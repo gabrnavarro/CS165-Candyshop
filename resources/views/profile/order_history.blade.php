@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="container">
+  <h1> Order History </h1>
   @if($cart->count())
+  <div class = "card">
   <table class = "table">
     <thead>
       <tr>
@@ -23,6 +25,7 @@
        @endforeach
      </tbody>
    </table>
+ </div>
    @else
      Order history is empty. Checkout some items and it will appear here.
    @endif

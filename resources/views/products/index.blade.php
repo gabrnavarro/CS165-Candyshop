@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+  <h1> Products </h1>
   @if($products->count())
   <table class = "table">
     <thead>

@@ -9,6 +9,7 @@ use App\Product;
 use Carbon;
 use View;
 use DB;
+use Form;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
