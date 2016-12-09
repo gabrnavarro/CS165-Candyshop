@@ -22,6 +22,11 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    public function username()
+{
+        return 'username';
+}
+
     /**
      * Where to redirect users after login / registration.
      *
