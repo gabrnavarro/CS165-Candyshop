@@ -9,7 +9,6 @@
       <tr>
         <th> Candy name </th>
         <th> Description </th>
-        <th> Status </th>
         <th> Available Items </th>
       </tr>
     </thead>
@@ -18,7 +17,6 @@
        <tr>
          <td> {{$product->item}}</td>
          <td> {{$product->description}}</td>
-         <td> {{$product->status}}</td>
          <td> {{$product->available_items}}</td>
          <td> <form action="/products/add_to_cart" method="post">
            {{ csrf_field() }}
