@@ -20,6 +20,11 @@
                                     <span class="help-block">
                                         <strong>{{ $errors->first('username') }}</strong>
                                     </span>
+
+                                    <ul>
+                                      @foreach ($errors->all() as $error)
+                                        <li> {{@error}}</li>
+                                      @endforeach
                                 @endif
                             </div>
                         </div>
