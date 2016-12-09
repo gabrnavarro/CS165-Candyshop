@@ -1,5 +1,14 @@
 <?php
 
+$url = parse_url(getenv("DATABASE_URL"));
+
+$host = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$database = substr($url["path"], 1);
+
+/*variables*/
+
 return [
 
     /*
@@ -12,6 +21,8 @@ return [
     | array format for simplicity. Here you can tweak the fetch style.
     |
     */
+
+
 
     'fetch' => PDO::FETCH_OBJ,
 
@@ -66,7 +77,18 @@ return [
             'engine' => null,
         ],
 
-        'pgsql' => [
+        'pgsql' => array(
+      'driver'   => 'pgsql',
+      'host'     => $host,
+      'database' => $database, /*heroku settings*/
+      'username' => $username,
+      'password' => $password,
+      'charset'  => 'utf8',
+      'prefix'   => '',
+      'schema'   => 'public',
+  ),
+
+      /*  'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '5432'),
@@ -77,7 +99,7 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ],
+        ], */
 
     ],
 
