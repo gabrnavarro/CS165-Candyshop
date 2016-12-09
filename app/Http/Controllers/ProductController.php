@@ -53,6 +53,7 @@ class ProductController extends Controller
       $product->available_items = $request->input('available_items');
       $product->status = "available";
       $product->save();
+      return view('products.store');
     }
 
     /**

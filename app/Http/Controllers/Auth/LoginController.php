@@ -29,9 +29,9 @@ class LoginController extends Controller
     protected $redirectTo = '/products';
 
     public function username()
-{
+    {
         return 'username';
-}
+    }
 
     /**
      * Create a new controller instance.
