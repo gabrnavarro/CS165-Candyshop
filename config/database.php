@@ -90,7 +90,7 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', '$host'),
+            'host' => env('DB_HOST', $host),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', '$database'),
             'username' => env('DB_USERNAME', $username),
