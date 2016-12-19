@@ -56,4 +56,16 @@ class CartController extends Controller
       $orders->where('status','in-cart')->update(['status'=>'sold']);
       return View::make('cart.checkout');
     }
+
+    public function edit($id){
+      $user = User::find(Auth::id());
+      $order = Order::find($id);
+      return view('cart.edit')->with('order', $order);
+    }
+    public function store(Request $request, $id){
+      $order = Order::find($id);
+      $order->quantity = $request->quantity;
+      $order->save();
+      return redirect('/cart');
+    }
 }

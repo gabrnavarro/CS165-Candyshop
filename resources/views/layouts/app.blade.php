@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
 
     <title>{{ config('app.name', 'Candyshop') }}</title>
 
@@ -71,6 +71,7 @@
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                         @if (Auth::user()->is_admin)
+                        <li><a class ="navbar-brand " href="/products/create">Create new product |</a></li>
                         @endif
                         <li><a class="navbar-brand" href="/cart"><i class="material-icons md-36">shopping_cart</i></a></li>
                             <li class="dropdown">

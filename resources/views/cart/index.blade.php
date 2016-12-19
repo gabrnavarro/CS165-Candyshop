@@ -26,6 +26,7 @@
            <input type="hidden" value="{{$cart_item->product_id}}" name="product_id"\>
            <input type="submit" value="Remove from cart" class="btn btn-raised btn-primary"/>
          </form></td>
+         <td> <a href="/cart/edit/{{$cart_item->order_id}}">Edit</a></td>
        </tr>
        @endforeach
      </tbody>

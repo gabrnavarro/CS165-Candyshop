@@ -51,4 +51,6 @@ Route::group(array('middleware'=>'auth'),function(){
   Route::get('/profile/order_history', 'ProfileController@order_history');
   Route::get('/profile/update', 'ProfileController@update');
   Route::post('/profile/store', 'ProfileController@store');
+  Route::get('/cart/edit/{id}', 'CartController@edit');
+  Route::post('/cart/store/{id}', 'CartController@store');
 });
